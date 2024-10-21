@@ -1,0 +1,66 @@
+server:
+  port: 0
+spring:
+  application:
+    name: user-service
+  profiles:
+    active: local
+  cloud:
+    config:
+      uri: http://localhost:8080
+    loadbalancer:
+      ribbon:
+        enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+
+#server:
+#  port: 7777
+#
+#spring:
+#  application:
+#    name: users-server
+#
+#  servlet:
+#    multipart:
+#      max-file-size: 1024MB
+#      max-request-size: 1024MB
+#
+#  devtools:
+#    livereload:
+#      enabled: false
+#    restart:
+#      enabled: false
+#
+#  thymeleaf:
+#    cache: false
+#
+#  datasource:
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    url: jdbc:mariadb://localhost:3306/d_spring
+#    username: root
+#    password: 0318
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#
+#springdoc:
+#  default-consumes-media-type: application/json
+#  default-produces-media-type: application/json
+#  swagger-ui:
+#    operations-sorter: alpha
+#    tags-sorter: alpha
+#    path: /swagger-ui.html
+#    disable-swagger-default-url: true
